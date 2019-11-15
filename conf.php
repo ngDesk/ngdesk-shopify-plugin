@@ -1,0 +1,5 @@
+
+<?php
+	define('NGDESK_SHOPIFY_APP_API_KEY', '5a57e032dc260da0e683d01167654f3f');
+	define('NGDESK_SHOPIFY_APP_SHARED_SECRET', '61f5b01e7c8abf9aec2f5162c48ec0ae');
+?>
