@@ -82,7 +82,7 @@ shopify_call($token, $shop, "/admin/api/2019-10/metafields.json", $field_array2,
 					<button  type="submit" style="background: #03A84E; color: #fff; height:40px; width:160px;">Save widget</button>
 				</div>
 				<div class="form-group" style="margin-top: 40px">
-					Having trouble and need some help? Check out our <a href="https://support.ngdesk.com/guide">Knowledge Base</a>.	
+					Having trouble and need some help? Check out our <a href="https://support.ngdesk.com/guide" target="new">Knowledge Base</a>.	
 				</div>
 			</form>
 			
