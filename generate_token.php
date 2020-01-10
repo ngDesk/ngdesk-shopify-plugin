@@ -9,6 +9,9 @@ $api_key = NGDESK_SHOPIFY_APP_API_KEY;
 $shared_secret = NGDESK_SHOPIFY_APP_SHARED_SECRET;
 $params = $_GET; // Retrieve all request parameters
 $hmac = $_GET['hmac']; // Retrieve HMAC request parameter
+$base_url = "https://".$_SERVER['HTTP_HOST']."/shopifyapps/ngdesk/";
+$file = 'token.txt';
+$istokenSet = 'set';
 
 $params = array_diff_key($params, array('hmac' => '')); // Remove hmac from params
 ksort($params); // Sort params lexographically
@@ -43,10 +46,14 @@ if (hash_equals($hmac, $computed_hmac)) {
 
 	// Show the access token (don't do this in production!)
 	//echo $access_token;
-
+	
+	//save token in file
+	file_put_contents($file, $access_token);
+	
 	// Redirect
 	$config['base_url'] = "https://".$_SERVER['HTTP_HOST']."/shopifyapps/ngdesk/";
-	$app_url = $config['base_url'].'?shop='.$params['shop'].'.myshopify.com&token='.$access_token;
+	//$app_url = $config['base_url'].'?shop='.$params['shop'].'.myshopify.com&token='.$access_token;
+	$app_url = $config['base_url'].'?shop='.$params['shop'].'.myshopify.com&token='.$istokenSet;
 	header("Location: " . $app_url);
 } else {
 	// Someone is trying to be shady!
