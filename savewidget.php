@@ -77,20 +77,14 @@ shopify_call($token, $shop, "/admin/api/2019-10/metafields.json", $field_array2,
 			<div class="modal-body">
 				<ul>
 					<li>If you don't have an account on ngDesk, <a href="https://signup.ngdesk.com/landing-pages/signup" target="new">create one for free!</a></li>
-					<li>Note down your subdomain entered while signing up to ngDesk.</li>
-					<li>Login with your credentials and navigate to Modules from side bar.</li>
-					<li>
-						Go to Chats 
-						<span class="glyphicon glyphicon-arrow-right"></span> 
-						Channel
-						<span class="glyphicon glyphicon-arrow-right"></span>
-						Chat
-						<span class="glyphicon glyphicon-arrow-right"></span>
-						Setup Tab
+					<li>Login with your credentials and navigate to 
+					Company Settings 
+					<span class="glyphicon glyphicon-arrow-right"></span> 
+					Plugins
+					<span class="glyphicon glyphicon-arrow-right"></span> 
+					Shopify
 					</li>
-					<li>Note down the widgetId mentioned against script src. (Refer screenshots)</li>
-					<li>Under shopify ngDesk app, enter subdomain (use the subdomain, you used while signing up)</li>
-					<li>Enter widgetId (use the widgetId mentioned under script) and click on save.</li>
+					<li>Use the highlighted subdomain and widget Id to enter under shopify ngDesk app and click on save.</li>
 					<li>Go to shopify home page of your shop and reload. A chat widget will appear on the bottom-right corner.</li>
 					<strong>
 						Still having trouble and need some help? Check out our <a href="https://support.ngdesk.com/guide" target="new">Knowledge Base</a>
