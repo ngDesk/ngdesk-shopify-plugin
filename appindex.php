@@ -12,7 +12,6 @@ $token =  file_get_contents($file);
 $token = $token_param;
 }*/
 $shop = explode(".myshopify.com",$shop_param)[0];
-
 //Adding script tag
 $script_array = array(
 			'script_tag' => array(
@@ -22,12 +21,12 @@ $script_array = array(
 			);
 			
 
-//$scriptTag = shopify_call($token, $shop, "/admin/api/2019-10/script_tags/108103204918.json", $script_array, 'DELETE');
-$scriptTagCount = shopify_call($token, $shop, "/admin/api/2019-10/script_tags/count.json", $script_array, 'GET');
+//$scriptTag = shopify_call($token, $shop, "/admin/api/2020-01/script_tags/108103204918.json", $script_array, 'DELETE');
+$scriptTagCount = shopify_call($token, $shop, "/admin/api/2020-01/script_tags/count.json", $script_array, 'GET');
 $scriptTagCount = json_decode($scriptTagCount['response'], JSON_PRETTY_PRINT);
 $scriptPresent = false;
 if($scriptTagCount['count'] > 0) {
-	$scriptTag = shopify_call($token, $shop, "/admin/api/2019-10/script_tags.json", $script_array, 'GET');
+	$scriptTag = shopify_call($token, $shop, "/admin/api/2020-01/script_tags.json", $script_array, 'GET');
 	$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 	foreach($scriptTag as $cur_script) {
@@ -38,11 +37,11 @@ if($scriptTagCount['count'] > 0) {
 		}
 	}
 	if($scriptPresent === false) {
-		$scriptTag = shopify_call($token, $shop, "/admin/api/2019-10/script_tags.json", $script_array, 'POST');
+		$scriptTag = shopify_call($token, $shop, "/admin/api/2020-01/script_tags.json", $script_array, 'POST');
 		$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 	}
 } else {
-	$scriptTag = shopify_call($token, $shop, "/admin/api/2019-10/script_tags.json", $script_array, 'POST');
+	$scriptTag = shopify_call($token, $shop, "/admin/api/2020-01/script_tags.json", $script_array, 'POST');
 	$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 }
 
@@ -57,11 +56,11 @@ $field_array = array(
 				)
 				
 			);
-$metafieldCount = shopify_call($token, $shop, "/admin/api/2019-10/metafields/count.json", $field_array, 'GET');
+$metafieldCount = shopify_call($token, $shop, "/admin/api/2020-01/metafields/count.json", $field_array, 'GET');
 $metafieldCount = json_decode($metafieldCount['response'], JSON_PRETTY_PRINT);
 
 if($metafieldCount['count'] > 0) {
-	$metafield = shopify_call($token, $shop, "/admin/api/2019-10/metafields.json", $field_array, 'GET');
+	$metafield = shopify_call($token, $shop, "/admin/api/2020-01/metafields.json", $field_array, 'GET');
 	$metafield = json_decode($metafield['response'], JSON_PRETTY_PRINT);
 
 	foreach($metafield as $cur_metafield) {
@@ -135,13 +134,13 @@ if($metafieldCount['count'] > 0) {
 		</div>
 	</div>
   
-	<div style="width:45%; margin-left:25%; margin-right:25%; border:inset; padding: 20px;margin-top:15px;">
+	<div class="well" style="width:45%; margin-left:25%; margin-right:25%; border:inset; padding: 20px;margin-top:15px;background-color: white;">
 			<div style="display: inline-flex;">
 				<img style="width: 60px; height: 60px;" src="assets/ngdesk-logo.png">
 				<h3 style="text-align: center;margin-left:20px;margin-top:20px;">ngDesk Settings</h3>
 			</div>
 			<hr>
-			<form role="form" method="Post" action="savewidget.php?shop=<?php echo $shop; ?>">
+			<form role="form" method="Post">
 				<div class="form-group" style="display: inline-flex; width: 100%; margin-top: 10px; align-items: baseline;">
 				
 					<p style="text-align: left; width: 25%">Subdomain:</p>
@@ -152,11 +151,18 @@ if($metafieldCount['count'] > 0) {
 					<input name="widgetId" id="widgetId" class="form-control" type="text"  style="height:30px; width:250px;" value="<?php echo $currentWidgetId; ?>" placeholder="Enter your Widget Id" />
 				</div>
 				<div style=" text-align: center;">
-					<button  type="submit" style="background: #03A84E; color: #fff; height:40px; width:160px;margin-top: 10px;">Save widget</button>
+					<button  type="submit" class="btn btn-success" formaction="savewidget.php?shop=<?php echo $shop; ?>&action=add" style="margin-top: 10px;width:160px;background-color:white;color:#5cb85c;">Add widget</button>
+					<button  type="submit" class="btn btn-danger" formaction="savewidget.php?shop=<?php echo $shop; ?>&action=remove" style="width:160px;margin-top: 10px;margin-left:10%;background-color:white;color:#d9534f;">Remove widget</button>
 				</div>
+				<hr>
 				<div class="form-group" style="margin-top: 20px">
 					For setup instructions <a href="#" data-toggle="modal" data-target="#myModal">click here!</a></br>
-					Don't have a ngDesk account? <a href="https://signup.ngdesk.com/landing-pages/signup" target="new">Create one for free here!</a></br>
+					Connect to your ngDesk account!
+					 <div class="btn-group">
+						<button class="btn btn-default"><a href="https://signup.ngdesk.com/landing-pages/signup" target="new">Sign Up</a></button>
+						<button class="btn btn-default"><a href="https://prod.ngdesk.com/login-support" target="new">Log in</a></button>
+					 </div>
+					</br>
 				</div>
 			</form>
 		</div>
